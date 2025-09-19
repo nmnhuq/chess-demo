@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Chess - Interactive Chess Game with AI Teacher</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Learn Chess ♔</h1>
+            <p class="subtitle">Play against AI and learn chess fundamentals</p>
+        </header>
+
+        <div class="game-container">
+            <!-- Left Panel - Game Info -->
+            <div class="left-panel">
+                <div class="game-status">
+                    <h3>Game Status</h3>
+                    <div id="turn-indicator" class="turn-indicator">
+                        <span class="turn-text">White to move</span>
+                    </div>
+                    <div id="game-message" class="game-message"></div>
+                </div>
+
+                <div class="ai-settings">
+                    <h3>AI Difficulty</h3>
+                    <select id="difficulty" class="difficulty-select">
+                        <option value="beginner" selected>Beginner (Learning)</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                    </select>
+                </div>
+
+                <div class="captured-pieces">
+                    <h3>Captured Pieces</h3>
+                    <div class="captured-white" id="captured-white"></div>
+                    <div class="captured-black" id="captured-black"></div>
+                </div>
+
+                <div class="game-controls">
+                    <button id="new-game" class="btn btn-primary">New Game</button>
+                    <button id="undo-move" class="btn btn-secondary">Undo Move</button>
+                    <button id="get-hint" class="btn btn-hint">Get Hint 💡</button>
+                </div>
+            </div>
+
+            <!-- Center - Chess Board -->
+            <div class="board-container">
+                <div id="chess-board" class="chess-board"></div>
+                <div class="board-labels">
+                    <div class="file-labels">
+                        <span>a</span><span>b</span><span>c</span><span>d</span>
+                        <span>e</span><span>f</span><span>g</span><span>h</span>
+                    </div>
+                    <div class="rank-labels">
+                        <span>8</span><span>7</span><span>6</span><span>5</span>
+                        <span>4</span><span>3</span><span>2</span><span>1</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel - Teaching Area -->
+            <div class="right-panel">
+                <div class="teaching-panel">
+                    <h3>Chess Teacher 📚</h3>
+                    <div id="teaching-content" class="teaching-content">
+                        <p class="welcome-message">Welcome! Click on a piece to see its legal moves highlighted in green. I'll help you learn as we play!</p>
+                    </div>
+                </div>
+
+                <div class="move-history">
+                    <h3>Move History</h3>
+                    <div id="move-list" class="move-list"></div>
+                </div>
+
+                <div class="piece-guide">
+                    <h3>How Pieces Move</h3>
+                    <div class="piece-info">
+                        <div class="piece-item">♔ King: One square in any direction</div>
+                        <div class="piece-item">♕ Queen: Any direction, any distance</div>
+                        <div class="piece-item">♖ Rook: Horizontal or vertical</div>
+                        <div class="piece-item">♗ Bishop: Diagonal only</div>
+                        <div class="piece-item">♘ Knight: L-shape (2+1 squares)</div>
+                        <div class="piece-item">♙ Pawn: Forward one (or two from start)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tutorial Modal -->
+        <div id="tutorial-modal" class="modal">
+            <div class="modal-content">
+                <h2>Welcome to Chess!</h2>
+                <p>Would you like a quick tutorial on how to play?</p>
+                <div class="modal-buttons">
+                    <button id="start-tutorial" class="btn btn-primary">Yes, show me!</button>
+                    <button id="skip-tutorial" class="btn btn-secondary">No, I know how to play</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Promotion Modal -->
+        <div id="promotion-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h2>Pawn Promotion!</h2>
+                <p>Your pawn has reached the end! Choose a piece to promote to:</p>
+                <div class="promotion-choices">
+                    <button class="promotion-choice" data-piece="q">♕ Queen</button>
+                    <button class="promotion-choice" data-piece="r">♖ Rook</button>
+                    <button class="promotion-choice" data-piece="b">♗ Bishop</button>
+                    <button class="promotion-choice" data-piece="n">♘ Knight</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="chess.js"></script>
+    <script src="ai.js"></script>
+    <script src="teacher.js"></script>
+</body>
+</html>
